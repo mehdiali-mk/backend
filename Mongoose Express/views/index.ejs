@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Message Board | Home</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/common.css" />
+    <link rel="stylesheet" href="/card.css" />
+  </head>
+  <body>
+    <div class="heading">
+      <h1 class="primary-heading">Message Board</h1>
+      <form action="/chats/new" method="get">
+        <button class="add-new">
+          <ul>
+            <li style="--i: #272652; --j: #6a6ae2">
+              <span class="icon"><i class="fa-brands fa-rocketchat"></i></span>
+              <span class="title">Add New</span>
+            </li>
+          </ul>
+        </button>
+      </form>
+    </div>
+    <!-- 
+    <% for (let chat of chats) { %>
+    <div>
+      <div>
+        <p>From: <%= chat.from %></p>
+      </div>
+      <div>
+        <p>To: <%= chat.to %></p>
+      </div>
+      <div>
+        <p><%= chat.message %></p>
+      </div>
+      <div>
+        <p><%= chat.createdAt.toString().split(" ")[4].slice(0,5) %></p>
+        <p><%= chat.createdAt.toString().split(" ").slice(1,4).join("/") %></p>
+      </div>
+      <div>
+        <form action="/chat/<%= chat.id %>/edit" method="get">
+          <button>Edit</button>
+        </form>
+        <form action="/chat/<%= chat.id %>?_method=DELETE" method="post">
+          <button>Delete</button>
+        </form>
+      </div>
+    </div>
+    <%}%>
+     -->
+
+    <div class="main-wrapper">
+      <% for (let chat of chats) { %>
+      <div class="card-container">
+        <div class="card-header">
+          <div class="img-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="text-chat"><%= chat.from%></div>
+        </div>
+        <div class="card-body">
+          <div class="messages-container">
+            <div class="message-box left">
+              <p>To: <%= chat.to %></p>
+            </div>
+            <div class="message-box right">
+              <p><%= chat.message %></p>
+            </div>
+          </div>
+        </div>
+        <div class="message-input">
+          <form action="/chat/<%= chat.id %>/edit" method="get">
+            <button class="button-send">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+          </form>
+          <form action="/chat/<%= chat.id %>?_method=DELETE" method="post">
+            <button class="button-send">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>
