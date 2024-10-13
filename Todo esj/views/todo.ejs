@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="/images/myLogo.png" alt="My Logo" class="logo-image" />
+        </div>
+        <ul class="navbar-list">
+          <li class="navbar-items">
+            <a href="/study" class="navbar-link">Study</a>
+          </li>
+          <li class="navbar-items">
+            <a href="/work" class="navbar-link">Work</a>
+          </li>
+          <li class="navbar-items">
+            <a href="/personal" class="navbar-link">Personal</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="today-information">
+      <p class="day"><%= todayDay %></p>
+      <p class="date"><%= todayDate %></p>
+    </div>
+
+    <div class="box" id="heading">
+      <h1><%= heading %></h1>
+    </div>
+
+    <div class="box">
+      <% for (let item of todoItems) {%>
+      <div class="item">
+        <input type="checkbox" />
+        <p><%= item %></p>
+      </div>
+      <%}%>
+
+      <form class="item" action="/add" method="post">
+        <input
+          type="text"
+          name="txtTodoItem"
+          id="txtTodoItem"
+          placeholder="Enter the todo"
+        />
+        <button type="submit" name="todoList" value="<%= heading %>">+</button>
+      </form>
+    </div>
+  </body>
+</html>
